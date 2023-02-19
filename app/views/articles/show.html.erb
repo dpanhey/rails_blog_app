@@ -10,3 +10,30 @@
   } %></li>
   <li><%= link_to 'Index', root_path %></li>
 </ul>
+
+<h2>Comments</h2>
+<% @article.comments.each do |comment| %>
+  <div>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </div>
+  <div>
+    <strong>Comment:</strong>
+    <p><%= comment.body %></p>
+  </div>
+<% end %>
+
+<h2>Add a comment</h2>
+<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+  <div>
+    <%= form.label :commenter %><br>
+    <%= form.text_field :commenter %>
+  </div>
+  <div>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
