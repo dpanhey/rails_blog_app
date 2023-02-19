@@ -12,16 +12,7 @@
 </ul>
 
 <h2>Comments</h2>
-<% @article.comments.each do |comment| %>
-  <div>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </div>
-  <div>
-    <strong>Comment:</strong>
-    <p><%= comment.body %></p>
-  </div>
-<% end %>
+<%= render @article.comments %>
 
 <h2>Add a comment</h2>
 <%= form_with model: [ @article, @article.comments.build ] do |form| %>
